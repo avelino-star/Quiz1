@@ -10,6 +10,7 @@
       font-family: 'Roboto', sans-serif;
       background-color: #000;
       color: white;
+      display: none; /* Esconde até a verificação */
     }
     .section {
       max-width: 1000px;
@@ -87,6 +88,20 @@
       color: #999999;
       text-decoration: none;
     }
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      color: #fff;
+      z-index: 1000;
+    }
     @media (max-width: 768px) {
       .text-block {
         font-size: 18px;
@@ -99,6 +114,7 @@
   </style>
 </head>
 <body>
+  <div class="loading">Verificando acesso...</div>
 
   <!-- Seção Destaque -->
   <div class="section destaque">
@@ -129,5 +145,44 @@
     </p>
   </div>
 
+  <script>
+    // Verificação combinada de IP e dispositivo
+    async function verifyAccess() {
+      try {
+        // 1. Verifica se é mobile
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (!isMobile) {
+          window.location.href = "https://www.atelevisao.com";
+          return;
+        }
+
+        // 2. Verificação de IP (opcional - pode comentar esta parte se não quiser)
+        const ipResponse = await fetch('https://ipapi.co/json/');
+        const ipData = await ipResponse.json();
+        
+        // Lista de países permitidos (BR = Brasil, PT = Portugal)
+        const allowedCountries = ['BR', 'PT'];
+        
+        if (!allowedCountries.includes(ipData.country)) {
+          window.location.href = "https://www.atelevisao.com";
+          return;
+        }
+
+        // Se passou em todas as verificações, mostra o conteúdo
+        document.body.style.display = 'block';
+        document.querySelector('.loading').style.display = 'none';
+        
+      } catch (error) {
+        console.error('Erro na verificação:', error);
+        // Em caso de erro, mostra o conteúdo como fallback
+        document.body.style.display = 'block';
+        document.querySelector('.loading').style.display = 'none';
+      }
+    }
+
+    // Inicia a verificação quando a página carrega
+    document.addEventListener('DOMContentLoaded', verifyAccess);
+  </script>
 </body>
 </html>
