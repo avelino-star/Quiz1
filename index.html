@@ -5,65 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Confirmação de Idade</title>
   <style>
-    /* [MANTENHA TODOS OS ESTILOS EXISTENTES] */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;
+      color: white;
+    }
+    .section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 15px 0;
+    }
+    .destaque {
+      background-color: #E91E63;
+    }
+    .preto {
+      background-color: #000;
+      color: #ffffff;
+    }
+    .heading {
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      margin: 15px auto;
+      letter-spacing: 0.8px;
+      text-align: center;
+    }
+    .text-block {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #ffffff;
+      margin: 30px 15px;
+    }
+    .quiz-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .quiz-buttons a {
+      color: white;
+      font-size: 20px;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 600;
+      padding: 18px 60px;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+    .btn-sim {
+      background-color: #4CAF50;
+      box-shadow: 0 0 15px #4CAF50;
+    }
+    .btn-sim:hover {
+      background-color: #3e8e41;
+      box-shadow: 0 0 20px #3e8e41;
+    }
+    .btn-nao {
+      background-color: #f44336;
+      box-shadow: 0 0 15px #f44336;
+    }
+    .btn-nao:hover {
+      background-color: #d32f2f;
+      box-shadow: 0 0 20px #d32f2f;
+    }
+    .footer {
+      font-family: 'Nunito Sans', sans-serif;
+      text-align: center;
+      padding: 35px 10px 10px;
+      background-color: #101010;
+    }
+    .footer p {
+      margin: 5px 0;
+      color: #cccccc;
+    }
+    .footer a {
+      color: #999999;
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .text-block {
+        font-size: 18px;
+      }
+      .quiz-buttons a {
+        padding: 15px 30px;
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="loading">Verificando acesso...</div>
 
-  <!-- [MANTENHA TODO O HTML EXISTENTE] -->
+  <!-- Seção Destaque -->
+  <div class="section destaque">
+    <h1 class="heading">Responda nossa pesquisa rápida!</h1>
+  </div>
 
-  <script>
-    // Verificação combinada de IP e dispositivo
-    async function verifyAccess() {
-      try {
-        // 1. Verifica se é mobile
-        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        if (!isMobile) {
-          window.location.href = "https://www.atelevisao.com";
-          return;
-        }
+  <!-- Seção com fundo preto -->
+  <div class="section preto">
+    <div class="text-block">
+      <p>Você tem mais de 18 anos?</p>
+    </div>
 
-        // 2. Verificação de IP (opcional)
-        const ipResponse = await fetch('https://ipapi.co/json/');
-        const ipData = await ipResponse.json();
-        
-        const allowedCountries = ['BR', 'PT'];
-        
-        if (!allowedCountries.includes(ipData.country)) {
-          window.location.href = "https://www.atelevisao.com";
-          return;
-        }
+    <div class="quiz-buttons">
+      <a href="parte2.html" class="btn-sim">Sim</a>
+      <a href="https://google.com" class="btn-nao">Não</a>
+    </div>
+  </div>
 
-        // Se passou nas verificações, mostra o conteúdo
-        document.body.style.display = 'block';
-        document.querySelector('.loading').style.display = 'none';
-        
-        // ADICIONE ESTA PARTE PARA PREVENIR BLOQUEIO DE LINKS
-        document.querySelectorAll('.quiz-buttons a').forEach(link => {
-          link.addEventListener('click', function(e) {
-            // Permite o comportamento padrão do link
-            return true;
-          });
-        });
-        
-      } catch (error) {
-        console.error('Erro na verificação:', error);
-        document.body.style.display = 'block';
-        document.querySelector('.loading').style.display = 'none';
-        
-        // Garante que os links funcionem mesmo com erro
-        document.querySelectorAll('.quiz-buttons a').forEach(link => {
-          link.addEventListener('click', function(e) {
-            return true;
-          });
-        });
-      }
-    }
+  <!-- Rodapé -->
+  <div class="section footer">
+    <p>© Copyright 2025 - Todos os direitos reservados.</p>
+    <p>
+      <a href="/termos">Termos de Uso</a> |
+      <a href="/politicas">Políticas de Privacidade</a>
+    </p>
+    <p style="font-size: 10px;">
+      Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Fazemos todos os esforços para indicar claramente o propósito do nosso conteúdo. Nós não vendemos o seu e-mail ou qualquer informação para terceiros. Jamais fazemos nenhum tipo de spam.
+    </p>
+  </div>
 
-    // Inicia a verificação quando a página carrega
-    document.addEventListener('DOMContentLoaded', verifyAccess);
-  </script>
 </body>
 </html>
