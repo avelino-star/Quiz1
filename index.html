@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Página 1 Full</title>
+  <title>Confirmação de Idade</title>
   <style>
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #000; /* Fundo preto geral */
+      background-color: #000;
       color: white;
     }
     .section {
@@ -16,8 +16,8 @@
       margin: 0 auto;
       padding: 15px 0;
     }
-    .vermelho {
-      background-color: #F00000;
+    .destaque {
+      background-color: #E91E63;
     }
     .preto {
       background-color: #000;
@@ -48,7 +48,6 @@
       margin: 30px 0;
     }
     .quiz-buttons a {
-      background-color: #4BB4FB;
       color: white;
       font-size: 20px;
       font-family: 'Work Sans', sans-serif;
@@ -57,11 +56,22 @@
       text-decoration: none;
       border-radius: 8px;
       transition: 0.3s ease;
-      box-shadow: 0 0 15px #4BB4FB;
     }
-    .quiz-buttons a:hover {
-      background-color: #3399dd;
-      box-shadow: 0 0 20px #3399dd;
+    .btn-sim {
+      background-color: #4CAF50;
+      box-shadow: 0 0 15px #4CAF50;
+    }
+    .btn-sim:hover {
+      background-color: #3e8e41;
+      box-shadow: 0 0 20px #3e8e41;
+    }
+    .btn-nao {
+      background-color: #f44336;
+      box-shadow: 0 0 15px #f44336;
+    }
+    .btn-nao:hover {
+      background-color: #d32f2f;
+      box-shadow: 0 0 20px #d32f2f;
     }
     .footer {
       font-family: 'Nunito Sans', sans-serif;
@@ -77,14 +87,6 @@
       color: #999999;
       text-decoration: none;
     }
-    img.responsive {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #ff0066;
-    }
     @media (max-width: 768px) {
       .text-block {
         font-size: 18px;
@@ -98,26 +100,20 @@
 </head>
 <body>
 
-  <!-- Seção Vermelha -->
-  <div class="section vermelho">
-    <h1 class="heading"> Responda as perguntas abaixo! </h1>
+  <!-- Seção Destaque -->
+  <div class="section destaque">
+    <h1 class="heading">Responda nossa pesquisa rápida!</h1>
   </div>
 
   <!-- Seção com fundo preto -->
   <div class="section preto">
     <div class="text-block">
-      <p>
-        Você vai ter a oportunidade de <span style="text-decoration: underline; color: #00ff99;">acessar</span>
-        o conteúdo <span style="text-decoration: underline; color: #00ff99;">Telegram</span> via Telegram
-        <span style="color: #ff00ff;">(Vazadinhas)</span>. <br><br>Tem certeza que deseja continuar?
-      </p>
+      <p>Você tem mais de 18 anos?</p>
     </div>
 
-    <img src="https://media.kasperskydaily.com/wp-content/uploads/sites/94/2018/03/29210452/Screen-Shot-2018-03-29-at-21.04.08.png" class="responsive" alt="Imagem da Modelo">
-
     <div class="quiz-buttons">
-      <a href="parte2.html">😈 Sim, quero continuar</a>
-      <a href="https://google.com">Não</a>
+      <a href="parte2.html" class="btn-sim">Sim</a>
+      <a href="https://google.com" class="btn-nao">Não</a>
     </div>
   </div>
 
@@ -129,7 +125,7 @@
       <a href="/politicas">Políticas de Privacidade</a>
     </p>
     <p style="font-size: 10px;">
-      Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais. Nós não vendemos o seu e-mail ou qualquer informação para terceiros. Jamais fazemos nenhum tipo de spam. Se você tiver alguma dúvida, sinta-se à vontade para usar o link de contato e falar conosco em horário comercial de Segunda a Sextas das 09h00 às 18h00. Lemos e respondemos todas as mensagens por ordem de chegada.
+      Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Fazemos todos os esforços para indicar claramente o propósito do nosso conteúdo. Nós não vendemos o seu e-mail ou qualquer informação para terceiros. Jamais fazemos nenhum tipo de spam.
     </p>
   </div>
 
